@@ -139,12 +139,12 @@ function handleFavouriteSeries (event){
 
 // Si no existe como favorita:
 if (indexSeriesFavourites === -1){
-    favouriteSeriesList.push(seriesSelected);
-    renderResults(favouriteSeriesList, favouriteSeries);
-    titleFavourites.classList.remove("hidden");
-    divFavourites.classList.remove("hidden");
+        favouriteSeriesList.push(seriesSelected);
+        renderResults(favouriteSeriesList, favouriteSeries);
+        titleFavourites.classList.remove("hidden");
+        divFavourites.classList.remove("hidden");
 
-    localStorage.setItem("favouriteSeries", JSON.stringify(favouriteSeriesList));
+        localStorage.setItem("favouriteSeries", JSON.stringify(favouriteSeriesList));
     }
 }
 

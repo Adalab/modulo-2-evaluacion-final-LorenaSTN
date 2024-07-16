@@ -36,7 +36,6 @@ body {
     padding: 25px;
 }
 
-
 .favourites {
     border: 3px solid rgb(200, 146, 200);
 }
@@ -47,7 +46,6 @@ body {
     background-color:  rgb(200, 146, 200);
     padding: 10px;
 }
-
 
 .title-card{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -66,26 +64,22 @@ body {
     background-color: rgb(237, 214, 130);
     padding: 10px;
 }
-/* 
-.display-search {
+
+/* .display-search {
     display: flex;
     height: 100vh;
 } */
 
-
-
 .section {
     display: flex;
     justify-content: space-evenly;
+    width: 100vw;
 
 }
 
 .anime-card {
    width: 300px;
 }
-
-
-
 
 .hidden {
     display: none;
