@@ -14,16 +14,23 @@ const favouriteSeries = document.querySelector(".js-favourite-series");
 const titleFavourites = document.querySelector(".js-title-favourites");
 const titleCard = document.querySelector(".title-card")
 
-
+const animeLocalStorage = JSON.parse(localStorage.getItem("animeSeriesSaved"));
 
 
 let animeSeriesList = [];
 let favouriteSeriesList = [];
 
+
+
 function handleSearchedSeries (event){
     event.preventDefault();
     const value = inputSearch.value;
     // console.log("ha hecho click")
+
+    if(animeLocalStorage !== null){
+        animeSeriesList = animeLocalStorage;
+        renderResults(animeLocalStorage, searchedSeries)
+    }else{
     fetch(`https://api.jikan.moe/v4/anime?q=${value}`)
     // console.log("https://api.jikan.moe/v4/anime?q=" + value)
     .then ((res) => res.json())
@@ -32,13 +39,16 @@ function handleSearchedSeries (event){
         // console.log(data.data[0].mal_id);
         animeSeriesList = data.data;
 
-        // localStorage.setItem("animeSeriesSaved", JSON.stringify(animeSeriesList));
+        localStorage.setItem("animeSeriesSaved", JSON.stringify(animeSeriesList));
+
+
         renderResults(animeSeriesList, searchedSeries);
       
         // console.log(data.data[0].title)
         // console.log(data.data[0].images.jpg.image_url)
     });
 }
+};
 
 
 buttonSearch.addEventListener("click", handleSearchedSeries);
