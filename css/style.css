@@ -1,6 +1,11 @@
 .section {
     display: flex;
+    justify-content: space-around;
 
+}
+
+.anime-card {
+    width: 500px;
 }
 
 .divs {
@@ -12,7 +17,7 @@
 }
 
 .favourite-card{
-    background-color: plum;
+    background-color: rgb(244, 221, 244);
 }
 
 .title-anime-card {
