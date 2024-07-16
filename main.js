@@ -14,6 +14,8 @@ const favouriteSeries = document.querySelector(".js-favourite-series");
 const titleFavourites = document.querySelector(".js-title-favourites");
 const titleCard = document.querySelector(".title-card");
 const divFavourites = document.querySelector(".js-div-favourites");
+const titleSearch = document.querySelector(".js-title-search");
+const divSearch = document.querySelector(".js-div-search");
 
 
 
@@ -21,6 +23,15 @@ const divFavourites = document.querySelector(".js-div-favourites");
 let animeSeriesList = [];
 let favouriteSeriesList = [];
 
+const savedFavourites = JSON.parse(localStorage.getItem("favouriteSeries"));
+if (savedFavourites) {
+    favouriteSeriesList = savedFavourites;
+    renderResults(favouriteSeriesList, favouriteSeries);
+    titleFavourites.classList.remove("hidden");
+    divFavourites.classList.remove("hidden");
+    titleSearch.classList.add("hidden");
+    divSearch.classList.add("hidden");
+};
 
 
 
@@ -57,8 +68,7 @@ function renderResults(animeSeriesList, searchedSeries) {
     searchedSeries.innerHTML = '';
     let resultsHTML = '';
 
-    const titleSearch = document.querySelector(".js-title-search");
-    const divSearch = document.querySelector(".js-div-search");
+ 
     if (animeSeriesList.length > 0) {
         titleSearch.classList.remove("hidden");
         divSearch.classList.remove("hidden");
@@ -134,6 +144,7 @@ if (indexSeriesFavourites === -1){
     titleFavourites.classList.remove("hidden");
     divFavourites.classList.remove("hidden");
 
+    localStorage.setItem("favouriteSeries", JSON.stringify(favouriteSeriesList));
     }
 }
 
