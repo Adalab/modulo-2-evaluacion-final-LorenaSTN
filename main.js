@@ -12,22 +12,17 @@ const searchedSeries = document.querySelector(".js-search-series");
 const inputSearch = document.querySelector(".js-input");
 const favouriteSeries = document.querySelector(".js-favourite-series");
 const titleFavourites = document.querySelector(".js-title-favourites");
-const titleSearch = document.querySelector(".js-title-search");
-const titleCard = document.querySelector(".title-card")
+const titleCard = document.querySelector(".title-card");
+const divFavourites = document.querySelector(".js-div-favourites");
 
-const animeLocalStorage = JSON.parse(localStorage.getItem("animeSeriesSaved"));
+
 
 
 let animeSeriesList = [];
-let favouriteSeriesList = JSON.parse(localStorage.getItem('favouriteSeries')) || [];
+let favouriteSeriesList = [];
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (favouriteSeriesList.length > 0) {
-        renderResults(favouriteSeriesList, favouriteSeries);
-        titleFavourites.classList.remove("hidden");
-    }
-});
+
 
 
 
@@ -36,10 +31,6 @@ function handleSearchedSeries (event){
     const value = inputSearch.value;
     // console.log("ha hecho click")
 
-    if(animeLocalStorage !== null){
-        animeSeriesList = animeLocalStorage;
-        renderResults(animeLocalStorage, searchedSeries)
-    }else{
     fetch(`https://api.jikan.moe/v4/anime?q=${value}`)
     // console.log("https://api.jikan.moe/v4/anime?q=" + value)
     .then ((res) => res.json())
@@ -48,15 +39,12 @@ function handleSearchedSeries (event){
         // console.log(data.data[0].mal_id);
         animeSeriesList = data.data;
 
-        localStorage.setItem("animeSeriesSaved", JSON.stringify(animeSeriesList));
-
 
         renderResults(animeSeriesList, searchedSeries);
       
         // console.log(data.data[0].title)
         // console.log(data.data[0].images.jpg.image_url)
     });
-}
 };
 
 
@@ -68,6 +56,16 @@ const placeholderImage = "https://via.placeholder.com/210x295/ffffff/666666/?tex
 function renderResults(animeSeriesList, searchedSeries) {
     searchedSeries.innerHTML = '';
     let resultsHTML = '';
+
+    const titleSearch = document.querySelector(".js-title-search");
+    const divSearch = document.querySelector(".js-div-search");
+    if (animeSeriesList.length > 0) {
+        titleSearch.classList.remove("hidden");
+        divSearch.classList.remove("hidden");
+    } else {
+        titleSearch.classList.add("hidden");
+        divSearch.classList.add("hidden");
+    }
 
     for (const anime of animeSeriesList) {
         const titleSeries = anime.title;
@@ -81,16 +79,21 @@ function renderResults(animeSeriesList, searchedSeries) {
             imageSeries = anime.images.jpg.image_url;
         }
 
+        
 
         resultsHTML += `
             <div class="anime-card js-series" id="${animeId}">
                 <h3 class="title-card">${titleSeries}</h3>
-                <img src="${imageSeries}" alt="${titleSeries}">
+                <img class="img-card" src="${imageSeries}" alt="${titleSeries}">
 
             </div>`;
 
         
         searchedSeries.innerHTML += resultsHTML; 
+
+        if (searchedSeries.length > 0){
+            titleSearch.classList.remove("hidden");
+        }
     
 
         
@@ -127,9 +130,10 @@ function handleFavouriteSeries (event){
 // Si no existe como favorita:
 if (indexSeriesFavourites === -1){
     favouriteSeriesList.push(seriesSelected);
-    localStorage.setItem('favouriteSeries', JSON.stringify(favouriteSeriesList));
     renderResults(favouriteSeriesList, favouriteSeries);
     titleFavourites.classList.remove("hidden");
+    divFavourites.classList.remove("hidden");
+
     }
 }
 

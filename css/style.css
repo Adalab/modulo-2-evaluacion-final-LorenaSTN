@@ -8,23 +8,66 @@ body {
     padding: 20px;
 }
 
+.input-search {
+    background-color: rgb(11, 11, 88);
+    border: 2px solid rgb(241, 249, 167);
+    width: 40%;
+}
+
+.submit-button {
+    background-color: rgb(241, 249, 167) ;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 10px;
+    color: rgb(11, 11, 88);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
+.reset-button{
+    background-color: rgb(241, 249, 167) ;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 10px;
+    color: rgb(11, 11, 88);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
 .form {
     padding: 25px;
 }
 
+
+.favourites {
+    border: 3px solid rgb(200, 146, 200);
+}
+
+.favourite-series-title{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:  rgb(11, 11, 88);
+    background-color:  rgb(200, 146, 200);
+    padding: 10px;
+}
+
+
 .title-card{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(241, 249, 167);
-    padding-bottom: 10px;
-    padding-top: 20px;
+   padding: 20px;
     font-size: 12px;
 }
 
-
-.favourite-series{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(241, 249, 167);
+.search {
+    border: 3px solid rgb(237, 214, 130);
 }
+
+.search-series-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:  rgb(11, 11, 88);
+    background-color: rgb(237, 214, 130);
+    padding: 10px;
+}
+
+
 
 
 .section {
@@ -34,22 +77,21 @@ body {
 }
 
 .anime-card {
-    width: 500px;
+   width: 300px;
 }
 
-.divs {
-    padding: 20px;
-}
+
+
 
 .hidden {
     display: none;
 }
 
 .favourite-card{
-    background-color:  rgb(241, 249, 167);
+    background-color:  rgb(220, 206, 227);
 }
 
 .title-anime-card {
-    color: rgb(10, 3, 82);
+    color: rgb(82, 3, 78);
 }
 
