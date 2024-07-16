@@ -1,3 +1,32 @@
+body {
+    background-color: rgb(11, 11, 88);
+}
+
+.main-title{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(241, 249, 167);
+    padding: 20px;
+}
+
+.form {
+    padding: 25px;
+}
+
+.title-card{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(241, 249, 167);
+    padding-bottom: 10px;
+    padding-top: 20px;
+    font-size: 12px;
+}
+
+
+.favourite-series{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(241, 249, 167);
+}
+
+
 .section {
     display: flex;
     justify-content: space-around;
@@ -17,9 +46,10 @@
 }
 
 .favourite-card{
-    background-color: rgb(244, 221, 244);
+    background-color:  rgb(241, 249, 167);
 }
 
 .title-anime-card {
-    color: rgb(95, 41, 95);
+    color: rgb(10, 3, 82);
 }
+

@@ -12,13 +12,22 @@ const searchedSeries = document.querySelector(".js-search-series");
 const inputSearch = document.querySelector(".js-input");
 const favouriteSeries = document.querySelector(".js-favourite-series");
 const titleFavourites = document.querySelector(".js-title-favourites");
+const titleSearch = document.querySelector(".js-title-search");
 const titleCard = document.querySelector(".title-card")
 
 const animeLocalStorage = JSON.parse(localStorage.getItem("animeSeriesSaved"));
 
 
 let animeSeriesList = [];
-let favouriteSeriesList = [];
+let favouriteSeriesList = JSON.parse(localStorage.getItem('favouriteSeries')) || [];
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (favouriteSeriesList.length > 0) {
+        renderResults(favouriteSeriesList, favouriteSeries);
+        titleFavourites.classList.remove("hidden");
+    }
+});
 
 
 
@@ -72,6 +81,7 @@ function renderResults(animeSeriesList, searchedSeries) {
             imageSeries = anime.images.jpg.image_url;
         }
 
+
         resultsHTML += `
             <div class="anime-card js-series" id="${animeId}">
                 <h3 class="title-card">${titleSeries}</h3>
@@ -79,7 +89,9 @@ function renderResults(animeSeriesList, searchedSeries) {
 
             </div>`;
 
+        
         searchedSeries.innerHTML += resultsHTML; 
+    
 
         
         const animeSeries = document.querySelectorAll(".js-series");
@@ -115,6 +127,7 @@ function handleFavouriteSeries (event){
 // Si no existe como favorita:
 if (indexSeriesFavourites === -1){
     favouriteSeriesList.push(seriesSelected);
+    localStorage.setItem('favouriteSeries', JSON.stringify(favouriteSeriesList));
     renderResults(favouriteSeriesList, favouriteSeries);
     titleFavourites.classList.remove("hidden");
     }
