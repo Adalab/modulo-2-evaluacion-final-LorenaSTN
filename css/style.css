@@ -66,13 +66,17 @@ body {
     background-color: rgb(237, 214, 130);
     padding: 10px;
 }
-
+/* 
+.display-search {
+    display: flex;
+    height: 100vh;
+} */
 
 
 
 .section {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
 }
 
@@ -88,10 +92,10 @@ body {
 }
 
 .favourite-card{
-    background-color:  rgb(220, 206, 227);
+    background-color:  rgb(227, 226, 206);
 }
 
 .title-anime-card {
-    color: rgb(82, 3, 78);
+    color: rgb(71, 19, 36);
 }
 
