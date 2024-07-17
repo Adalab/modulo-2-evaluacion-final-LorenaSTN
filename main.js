@@ -151,9 +151,7 @@ function handleRemovingFavourites(event) {
     titleFavourites.classList.add("hidden");
     divFavourites.classList.add("hidden");
   }
-  //   else {
 
-  //   }
   localStorage.setItem("favouriteSeries", JSON.stringify(favouriteSeriesList));
 }
 
