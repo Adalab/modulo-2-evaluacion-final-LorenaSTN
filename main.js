@@ -16,7 +16,7 @@ let animeSeriesList = [];
 let favouriteSeriesList = [];
 
 const savedFavourites = JSON.parse(localStorage.getItem("favouriteSeries"));
-if (savedFavourites) {
+if (savedFavourites && savedFavourites.length > 0) {
   favouriteSeriesList = savedFavourites;
   renderResults(favouriteSeriesList, favouriteSeries, true);
   titleFavourites.classList.remove("hidden");
@@ -37,7 +37,7 @@ function handleSearchedSeries(event) {
     .then((data) => {
       animeSeriesList = data.data;
 
-      renderResults(animeSeriesList, searchedSeries);
+      renderResults(animeSeriesList, searchedSeries, false);
     });
 }
 
@@ -46,7 +46,7 @@ buttonSearch.addEventListener("click", handleSearchedSeries);
 const placeholderImage =
   "https://via.placeholder.com/210x295/ffffff/666666/?text=TV.";
 
-function renderResults(animeSeriesList, searchedSeries) {
+function renderResults(animeSeriesList, searchedSeries, isFavourite) {
   searchedSeries.innerHTML = "";
   let resultsHTML = "";
 
@@ -73,25 +73,34 @@ function renderResults(animeSeriesList, searchedSeries) {
     }
 
     resultsHTML += `
-            <div class="anime-card js-series" id="${animeId}">
-                
+            <div class="anime-card ${
+              isFavourite ? "" : "js-normal-series"
+            }"  id="${animeId}">
                 <h3 class="title-card">${titleSeries}</h3>
                 <img class="img-card" src="${imageSeries}" alt="${titleSeries}">
-
-
+                ${
+                  isFavourite
+                    ? '<button class="button-x js-button-x">X</button>'
+                    : ""
+                }
             </div>`;
+  }
+  searchedSeries.innerHTML = resultsHTML;
 
-    searchedSeries.innerHTML = resultsHTML;
+  if (searchedSeries.length > 0) {
+    titleSearch.classList.remove("hidden");
+  }
 
-    if (searchedSeries.length > 0) {
-      titleSearch.classList.remove("hidden");
-    }
+  const animeSeries = document.querySelectorAll(".js-normal-series");
 
-    const animeSeries = document.querySelectorAll(".js-series");
+  for (const animeSerie of animeSeries) {
+    animeSerie.addEventListener("click", handleFavouriteSeries);
+  }
 
-    for (const animeSerie of animeSeries) {
-      animeSerie.addEventListener("click", handleFavouriteSeries);
-    }
+  const xButton = document.querySelectorAll(".js-button-x");
+
+  for (const xbttn of xButton) {
+    xbttn.addEventListener("click", handleRemovingFavourites);
   }
 }
 
@@ -115,7 +124,7 @@ function handleFavouriteSeries(event) {
 
   if (indexSeriesFavourites === -1) {
     favouriteSeriesList.push(seriesSelected);
-    renderResults(favouriteSeriesList, favouriteSeries);
+    renderResults(favouriteSeriesList, favouriteSeries, true);
     titleFavourites.classList.remove("hidden");
     divFavourites.classList.remove("hidden");
 
@@ -124,6 +133,28 @@ function handleFavouriteSeries(event) {
       JSON.stringify(favouriteSeriesList)
     );
   }
+}
+
+function handleRemovingFavourites(event) {
+  const idClickedAnime = parseInt(event.currentTarget.parentNode.id);
+
+  favouriteSeriesList = favouriteSeriesList.filter(
+    (series) => series.mal_id !== idClickedAnime
+  );
+
+  console.log(favouriteSeriesList.length);
+
+  if (favouriteSeriesList.length > 0) {
+    renderResults(favouriteSeriesList, favouriteSeries, true);
+  } else {
+    favouriteSeries.innerHTML = "";
+    titleFavourites.classList.add("hidden");
+    divFavourites.classList.add("hidden");
+  }
+  //   else {
+
+  //   }
+  localStorage.setItem("favouriteSeries", JSON.stringify(favouriteSeriesList));
 }
 
 function handleResetButton() {
