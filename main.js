@@ -1,10 +1,5 @@
 "use strict"
 
-// API : https://api.jikan.moe/v4/anime?q=naruto
-// Buscador de series
-// cambiar la parte naruto por lo que escribe el usuario
-
-//"https://api.jikan.moe/v4/anime?q=" + value
 
 
 const buttonSearch = document.querySelector(".js-submit-bttn");
@@ -16,7 +11,8 @@ const titleCard = document.querySelector(".title-card");
 const divFavourites = document.querySelector(".js-div-favourites");
 const titleSearch = document.querySelector(".js-title-search");
 const divSearch = document.querySelector(".js-div-search");
-
+const resetButton = document.querySelector(".js-reset-bttn");
+const deleteFavourites = document.querySelector(".js-delete-favourites");
 
 
 
@@ -46,15 +42,11 @@ function handleSearchedSeries (event){
     // console.log("https://api.jikan.moe/v4/anime?q=" + value)
     .then ((res) => res.json())
     .then((data) => {
-        // console.log(data.data);
-        // console.log(data.data[0].mal_id);
+  
         animeSeriesList = data.data;
-
 
         renderResults(animeSeriesList, searchedSeries);
       
-        // console.log(data.data[0].title)
-        // console.log(data.data[0].images.jpg.image_url)
     });
 };
 
@@ -135,9 +127,6 @@ function handleFavouriteSeries (event){
         }
     );
 
-
-
-// Si no existe como favorita:
 if (indexSeriesFavourites === -1){
         favouriteSeriesList.push(seriesSelected);
         renderResults(favouriteSeriesList, favouriteSeries);
@@ -149,6 +138,27 @@ if (indexSeriesFavourites === -1){
 }
 
 
+function handleResetButton() {
+    
+    favouriteSeriesList = [];
+    animeSeriesList = [];
 
+    localStorage.removeItem("favouriteSeries");
+
+  
+    titleFavourites.classList.add("hidden");
+    divFavourites.classList.add("hidden");
+    titleSearch.classList.add("hidden");
+    divSearch.classList.add("hidden");
+
+
+    favouriteSeries.innerHTML = '';
+    searchedSeries.innerHTML = '';
+   
+
+    inputSearch.value = '';
+}
+
+resetButton.addEventListener("click", handleResetButton);
 
 
