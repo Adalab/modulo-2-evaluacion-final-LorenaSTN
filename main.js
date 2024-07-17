@@ -31,8 +31,6 @@ if (savedFavourites) {
 
 
 
-
-
 function handleSearchedSeries (event){
     event.preventDefault();
     const value = inputSearch.value;
@@ -54,7 +52,7 @@ function handleSearchedSeries (event){
 buttonSearch.addEventListener("click", handleSearchedSeries);
 
 
-const placeholderImage = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV"
+const placeholderImage = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV."
 
 function renderResults(animeSeriesList, searchedSeries) {
     searchedSeries.innerHTML = '';
@@ -85,6 +83,7 @@ function renderResults(animeSeriesList, searchedSeries) {
 
         resultsHTML += `
             <div class="anime-card js-series" id="${animeId}">
+                
                 <h3 class="title-card">${titleSeries}</h3>
                 <img class="img-card" src="${imageSeries}" alt="${titleSeries}">
 
@@ -97,8 +96,6 @@ function renderResults(animeSeriesList, searchedSeries) {
             titleSearch.classList.remove("hidden");
         }
     
-
-        
         const animeSeries = document.querySelectorAll(".js-series");
         
         for(const animeSerie of animeSeries){
@@ -135,7 +132,8 @@ if (indexSeriesFavourites === -1){
 
         localStorage.setItem("favouriteSeries", JSON.stringify(favouriteSeriesList));
     }
-}
+};
+
 
 
 function handleResetButton() {
