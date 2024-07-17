@@ -16,9 +16,9 @@ let animeSeriesList = [];
 let favouriteSeriesList = [];
 
 const savedFavourites = JSON.parse(localStorage.getItem("favouriteSeries"));
-if (savedFavourites && savedFavourites.length > 0) {
+if (savedFavourites) {
   favouriteSeriesList = savedFavourites;
-  renderResults(favouriteSeriesList, favouriteSeries);
+  renderResults(favouriteSeriesList, favouriteSeries, true);
   titleFavourites.classList.remove("hidden");
   divFavourites.classList.remove("hidden");
   titleSearch.classList.add("hidden");
@@ -37,7 +37,7 @@ function handleSearchedSeries(event) {
     .then((data) => {
       animeSeriesList = data.data;
 
-      renderResults(animeSeriesList, searchedSeries, false);
+      renderResults(animeSeriesList, searchedSeries);
     });
 }
 
@@ -77,6 +77,7 @@ function renderResults(animeSeriesList, searchedSeries) {
                 
                 <h3 class="title-card">${titleSeries}</h3>
                 <img class="img-card" src="${imageSeries}" alt="${titleSeries}">
+
 
             </div>`;
 
