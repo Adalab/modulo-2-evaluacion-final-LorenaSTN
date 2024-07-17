@@ -122,9 +122,6 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
 
-.hidden {
-    display: none;
-}
 
 .container-favourites div {
     display: flex;
@@ -132,7 +129,20 @@ body {
     justify-content: space-evenly;
 }
 
+.button-x {
+    background-color: rgb(200, 146, 200);
+    padding: 10px 12px;
+    border-radius: 60px;
+    margin-left: 20px;
+    color:  rgb(11, 11, 88);
+    font-weight: bold;
+}
+
 
 .container-favourites img{
     width: 100px;
+}
+
+.hidden {
+    display: none;
 }
