@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
     <header>
-        <h1 class="main-title">Buscador de Series Anime </h1>
+      <h1 class="main-title">Buscador de Series Anime</h1>
     </header>
 
     <main>
-        <form class="form" action="">
-            <label for="series"></label>
-            <input type="text" class="js-input input-search" id="series">
+      <form class="form" action="">
+        <label for="series"></label>
+        <input type="text" class="js-input input-search" id="series" />
 
-            <button type="submit" class="js-submit-bttn submit-button">Buscar</button>
-            <button type="reset" class="js-reset-bttn reset-button">Reset</button>
-        </form>
+        <button type="submit" class="js-submit-bttn submit-button">
+          Buscar
+        </button>
+        <button type="reset" class="js-reset-bttn reset-button">Reset</button>
+      </form>
 
-        <section class="section">
+      <section class="section">
+        <div class="favourites hidden js-div-favourites">
+          <h3 class="hidden js-title-favourites favourite-series-title">
+            Series favoritas
+          </h3>
+          <button class="hidden js-remove-favourites remove-favourites">
+            Eliminar favoritos
+          </button>
+          <div class="js-favourite-series container-favourites"></div>
+        </div>
 
-            <div class="favourites hidden js-div-favourites">
-                <h3 class="hidden js-title-favourites favourite-series-title">Series favoritas</h3>
-                <button class="hidden js-remove-favourites remove-favourites">Eliminar favoritos</button>
-                <div class="js-favourite-series container-favourites">
-                
-                </div>
-            </div>
-
-
-            <div class="search hidden js-div-search">
-                <h3 class="hidden js-title-search search-series-title">Resultado de busqueda</h3>
-                <div class="js-search-series container-search">
-
-                </div>
-             </div>
-
-        </section>
+        <div class="search hidden js-div-search">
+          <h3 class="hidden js-title-search search-series-title">
+            Resultado de busqueda
+          </h3>
+          <div class="js-search-series container-search"></div>
+        </div>
+      </section>
     </main>
 
-
     <script src="./main.js" text="javascript"></script>
-</body>
+  </body>
 </html>

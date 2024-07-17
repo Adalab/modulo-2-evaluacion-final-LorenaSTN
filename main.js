@@ -31,15 +31,13 @@ if (savedFavourites && savedFavourites.length > 0) {
 function handleSearchedSeries(event) {
   event.preventDefault();
   const value = inputSearch.value;
-  // console.log("ha hecho click")
 
   fetch(`https://api.jikan.moe/v4/anime?q=${value}`)
-    // console.log("https://api.jikan.moe/v4/anime?q=" + value)
     .then((res) => res.json())
     .then((data) => {
       animeSeriesList = data.data;
 
-      renderResults(animeSeriesList, searchedSeries);
+      renderResults(animeSeriesList, searchedSeries, false);
     });
 }
 
