@@ -5,7 +5,7 @@ El ejercicio consiste en realizar una aplicación web conectada al API de Jikan 
 
 La usuaria introduce en el campo de busqueda una serie de anime y como resultado le devuelve un listado con su busqueda, mostrando una imagen de la serie y su título. 
 
-<img width="600" alt="Captura de pantalla 2024-07-17 a las 11 40 28" src="https://github.com/user-attachments/assets/a57f18d6-4d63-414f-8fe5-37711b50462f"> <img width="600" alt="Captura de pantalla 2024-07-17 a las 11 40 52" src="https://github.com/user-attachments/assets/db3a5f5c-31d9-4c7c-b80d-76a1b1a6d3f5">
+<img width="600" alt="Captura de pantalla 2024-07-17 a las 11 40 52" src="https://github.com/user-attachments/assets/db3a5f5c-31d9-4c7c-b80d-76a1b1a6d3f5">
 
 Además puede seleccionar en dicha busqueda sus series favoritas (que son guardadas en el localStorage) y borrarlas de la misma lista. 
 
