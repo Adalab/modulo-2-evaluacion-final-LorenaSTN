@@ -9,8 +9,6 @@ La usuaria introduce en el campo de busqueda una serie de anime y como resultado
 
 Además puede seleccionar en dicha busqueda sus series favoritas (que son guardadas en el localStorage) y borrarlas de la misma lista. 
 
-<img width="600" alt="Captura de pantalla 2024-07-17 a las 13 36 07" src="https://github.com/user-attachments/assets/b1ec48fa-a8ab-4321-b952-bc312bb7efed">
-
 <img width="600" alt="Captura de pantalla 2024-07-17 a las 13 37 32" src="https://github.com/user-attachments/assets/7714634e-ec6e-449c-8287-d6a4b606e754">
 
 ## Instrucciones
